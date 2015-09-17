@@ -84,12 +84,16 @@
                      data))
             width height))))
 
+(define (bmp-width bmp) (cadr bmp))
+(define (bmp-height bmp) (caddr bmp))
+(define (bmp-data bmp) (car bmp))
+
 (define (write-bmp bmp #!optional port)
   (with-output-to-port (if port port (current-output-port))
     (lambda ()
-      (let ((width (cadr bmp))
-            (height (caddr bmp))
-            (data (car bmp)))
+      (let ((width (bmp-width bmp))
+            (height (bmp-height bmp))
+            (data (bmp-data bmp)))
         (write-bmp-fileheader width height)
         (write-bmp-infoheader width height)
         (for-each (lambda (y)
@@ -109,3 +113,6 @@
 (define (bmp-make-pixel r g b #!optional (le #t))
   (if le (u8vector b g r)
       (u8vector r g b)))
+
+
+

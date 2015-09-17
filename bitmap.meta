@@ -1,0 +1,7 @@
+;;; bitmap.meta
+
+((author "yagi hiroki")
+ (synopsis "bitmap utilities")
+ (license "GPLv3")
+ (files "main.scm" "bitmap.scm" "bitmap.setup" "bitmap.meta")
+ (version "0.0.1"))

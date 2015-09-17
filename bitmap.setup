@@ -1,0 +1,10 @@
+;; bitmap.setup
+
+;;; コンパイル  => postscheme.so
+(compile -s -O3 -d1 "bitmap.scm" -j bitmap)
+(compile -s -O3 -d0 "bitmap.import.scm")
+;;; インストール
+(install-extension
+ 'bitmap
+ '("bitmap.so" "bitmap.import.so")
+ '((version 1.0)))

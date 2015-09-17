@@ -84,8 +84,8 @@
                      data))
             width height))))
 
-(define (write-bmp filename bmp)
-  (with-output-to-file filename
+(define (write-bmp bmp #!optional port)
+  (with-output-to-port (if port port (current-output-port))
     (lambda ()
       (let ((width (cadr bmp))
             (height (caddr bmp))

@@ -29,4 +29,6 @@
 (define (make-random-invader-bmp #!optional (random-color? #f))
   (make-bmp (format-invader-list (random-invader-list random-color?))))
 
-(write-bmp "invader.bmp" (make-random-invader-bmp))
+(with-output-to-file "invader.bmp"
+    (lambda ()
+      (write-bmp (make-random-invader-bmp))))
